@@ -1,16 +1,7 @@
 import FaceFrownIcon from '@heroicons/react/24/solid/FaceFrownIcon';
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-
-import { setPageTitle } from '../../app/store/headerSlice';
+import React from 'react';
 
 const InternalPage: React.FC = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(setPageTitle({ title: '' }));
-  }, []);
-
   return (
     <div className="hero h-4/5 bg-base-200">
       <div className="hero-content text-accent text-center">

@@ -1,19 +1,12 @@
 import DocumentIcon from '@heroicons/react/24/solid/DocumentIcon';
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 
-import { setPageTitle } from '../../app/store/headerSlice';
 import useApiRequest from '../../hooks/useApiRequest';
 import { useAuth } from '../../hooks/useAuth';
 
 const InternalPage: React.FC = () => {
-  const dispatch = useDispatch();
   const { fetchData: pageLoadFetch, response: pageLoadData } = useApiRequest();
   const { user } = useAuth();
-
-  useEffect(() => {
-    dispatch(setPageTitle({ title: 'Blank Page' }));
-  }, []);
 
   useEffect(() => {
     pageLoadFetch('GET', '/todos/1');

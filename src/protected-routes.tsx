@@ -3,6 +3,8 @@ import { Navigate } from 'react-router-dom';
 
 import checkAuth from './app/auth';
 import Layout from './containers/Layout';
+import { useDispatch } from 'react-redux';
+import { setPageTitle } from './app/store/headerSlice';
 
 export interface IChildren {
   children: React.ReactNode;
@@ -19,10 +21,10 @@ const ProtectedRoutes = ({
   pageTitle,
 }: IProtectedRoute) => {
   const token = checkAuth();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const title = 'react-redux-toolkit-template';
-    document.title = `${title} | ${pageTitle}`;
+    dispatch(setPageTitle({ title: pageTitle }));
   }, [pageTitle]);
 
   if (isPrivate && !token) {

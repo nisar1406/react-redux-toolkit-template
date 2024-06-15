@@ -40,7 +40,9 @@ export const headerSlice = createSlice({
       state: HeaderState,
       action: PayloadAction<{ title: string }>
     ) => {
+      const title = 'react-redux-toolkit-template';
       state.pageTitle = action.payload.title;
+      document.title = `${title} | ${action.payload.title}`;
     },
 
     removeNotificationMessage: (state: HeaderState) => {
